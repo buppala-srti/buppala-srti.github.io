@@ -60,6 +60,10 @@
 </script>
 	<script>
 	window.addEventListener("message", (event) => {
+		// https://dsr907432.dsp-dev-intg-1.privaciops.com
+		if (event.data !== 'dnsOptOutSignal') {
+			return;
+		}
 		console.log(event, event.data, event.origin);
 		if (window.SecuritiSDK && window.SecuritiSDK.onReady) {
 			//console.log('Rejecting all cookies on form submission')
