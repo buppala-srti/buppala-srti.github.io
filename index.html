@@ -58,6 +58,18 @@
 	parent_node.appendChild(s);
 })()
 </script>
+	<script>
+	window.addEventListener("message", (event) => {
+		console.log(event, event.data, event.origin);
+		if (window.SecuritiSDK && window.SecuritiSDK.onReady) {
+			console.log('Rejecting all cookies on form submission')
+			window.SecuritiSDK.onReady(sdk => {
+				console.log('Rejected all cookies on form submission')
+					sdk.rejectAll()
+			})
+        }
+	},false);
+	</script>
     <!-- You may style the button by overriding class "cmp-revoke-consent" -->
     <button class="cmp-revoke-consent">Revoke Consent</button>
 </head>
