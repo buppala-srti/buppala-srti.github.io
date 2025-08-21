@@ -44,6 +44,20 @@
         document.cookie = "1239_ram=1239";
     </script>
     
+<!-- After adding this script, call setConsentBannerParams({uuid: <unique id> }) to set unique ID for a customer.  -->
+<script>
+(function () {
+	var s = document.createElement('script');
+	s.src = 'https://cdn-dev-intg-1.securiti.xyz/consent/cookie-consent-sdk-loader.js';
+	s.setAttribute('data-tenant-uuid', '7a46e2e1-0e80-4a8b-92f7-b4b29a6db014');
+	s.setAttribute('data-domain-uuid', '035b33a9-f40e-440b-a532-5428b3a94eaf');
+	s.setAttribute('data-backend-url', 'https://dev-intg-1.securiti.xyz');
+	s.setAttribute('data-skip-css', 'false');
+	s.defer = true;
+	var parent_node = document.head || document.body;
+	parent_node.appendChild(s);
+})()
+</script>
     <!-- You may style the button by overriding class "cmp-revoke-consent" -->
     <button class="cmp-revoke-consent">Revoke Consent</button>
 </head>
