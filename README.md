@@ -1,1 +1,1 @@
-# cookiestest.github.io
+# buppala-srti.github.io
