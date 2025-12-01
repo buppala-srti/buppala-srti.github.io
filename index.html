@@ -58,22 +58,19 @@
 	parent_node.appendChild(s);
 })()
 </script>
-	<script>
-	window.addEventListener("message", (event) => {
-		// https://dsr907432.dsp-dev-intg-1.privaciops.com
-		if (event.data !== 'dnsOptOutSignal') {
-			return;
-		}
-		console.log(event, event.data, event.origin);
-		if (window.SecuritiSDK && window.SecuritiSDK.onReady) {
-			console.log('Rejecting all cookies on form submission')
-			window.SecuritiSDK.onReady(sdk => {
-				console.log('Rejected all cookies on form submission')
-				sdk.rejectAll()
-			})
+<script>
+window.addEventListener('message', (event) => {
+    if (event.data.sec_signal_identifier === 'sec-dsr-submission-success') {
+		console.log(event)
+        // Process message
+        if (window.SecuritiSDK && window.SecuritiSDK.onReady && (event.data.sec_dsr_data.ticket_type||[]).includes('do-not-sell')) {
+            window.SecuritiSDK.onReady(sdk => {
+                sdk.rejectAll()
+            })
         }
-	},false);
-	</script>
+    }
+});
+</script>
     <!-- You may style the button by overriding class "cmp-revoke-consent" -->
     <button class="cmp-revoke-consent">Revoke Consent</button>
 </head>
