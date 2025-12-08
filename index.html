@@ -61,12 +61,10 @@
 <script>
 window.addEventListener('message', (event) => {
     if (event.data.sec_signal_identifier === 'sec-dsr-submission-success') {
-		console.log(event)
+		console.log(event);
         // Process message
-        if (window.SecuritiSDK && window.SecuritiSDK.onReady && (event.data.sec_dsr_data.ticket_type||[]).includes('do-not-sell')) {
-            window.SecuritiSDK.onReady(sdk => {
-                sdk.rejectAll()
-            })
+        if (window.SecuritiSDK && bannerGenerator && (event.data.sec_dsr_data.ticket_type||[]).includes('do-not-sell')) {
+            bannerGenerator.setDoNotSellConsent()
         }
     }
 });
